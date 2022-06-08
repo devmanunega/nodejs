@@ -1,26 +1,42 @@
-//Notas de aprendizaje nodejs.
+// Importar || Incluir express
+const express = require('express');
 
-/**
- * Servidor basico con http.
- *
- * 1 - Importar modulo http.
- * 2 - Crear servidor.
- * 3 - Configurar puerto.
- * 4 - Poner a la escucha el servidor.
- */
+// Crear servidor
+const app = express();
 
-// 1 - Importar modulo http
-const http = require('http');
+// Configurar puerto
+const puerto = 3000;
 
-// 2 - Crear servidor.
-const servidor = http.createServer((req, res) => {
-  res.end('Servidor puro nodejs - basico');
+// =================================================================
+
+app.use(express.static(__dirname + '/public')) // Al existir en la carpeta public un archivo index.html, este se convierte en la respuesta
+// a la ruta '/' raiz.
+
+// Configurar un archivo para una respuesta al codigo 404
+app.use((req, res, next) => {
+    res.status(404).sendFile(__dirname + '/public/404.html')
+})
+
+//==================================================================
+
+// Metodo GET ruta raiz
+app.get('/', (req, res) => {
+  res.send('Estás en la pagina Inicio 🏠');
 });
 
-// 3 - Configurar puerto.
-const puerto = 3000; // Forma manual para pruebas locales
+// Metodo GET ruta Usuarios
+app.get('/usuarios', (req, res) => {
+  res.send('Usuarios 🧑👨👩🧑👨‍🦰');
 
-// 4 - Poner a la escucha el servidor
-servidor.listen(puerto, () => {
-  console.log(`Escuchando en el puerto ${puerto}`);
+  console.log('Están metiendose con los usuarios')
+});
+
+// Metodo GET ruta reportes
+app.get('/reportes', (req, res) => {
+  res.send('Zona de reportes 🚚');
+});
+
+// Colocar la app a la escucha
+app.listen(puerto, () => {
+  console.log('Escuchando en el puerto', puerto);
 });

@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 20%;
+    background-color: coral;
+    border: 5px dashed black;
+}
+
+h1 {
+    border: 2px dashed black;
+}
