@@ -1,0 +1,22 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "Proyecto en el cual se anotarán los conceptos fundamentales de nodejs en la creacion de servidor.",
+  "main": "main.js",
+  "scripts": {
+    "start": "nodemon ./main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devmanunega/nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devmanunega/nodejs/issues"
+  },
+  "homepage": "https://github.com/devmanunega/nodejs#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
