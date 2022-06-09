@@ -1,42 +1,32 @@
-// Importar || Incluir express
+// Servidor nodejs con express y Ejs
+
+// 1 - Express
 const express = require('express');
 
-// Crear servidor
+// 2 - App
 const app = express();
 
-// Configurar puerto
+// 3 - Puerto
 const puerto = 3000;
 
-// =================================================================
+// 4 - Usar el motor de plantilla EJS
+app.set('view engine', 'ejs');
 
-app.use(express.static(__dirname + '/public')) // Al existir en la carpeta public un archivo index.html, este se convierte en la respuesta
-// a la ruta '/' raiz.
+// 5 - Carpeta donde están las vistas
+app.set('views', __dirname + '/views');
 
-// Configurar un archivo para una respuesta al codigo 404
+// Configurando respuesta a la raiz
+app.get('/', (req, res) => {
+  res.render('index');
+
 app.use((req, res, next) => {
-    res.status(404).sendFile(__dirname + '/public/404.html')
+  res.status(404).render('404');
 })
 
-//==================================================================
-
-// Metodo GET ruta raiz
-app.get('/', (req, res) => {
-  res.send('Estás en la pagina Inicio 🏠');
+  console.log('Estan visitando la pagina de  inicio');
 });
 
-// Metodo GET ruta Usuarios
-app.get('/usuarios', (req, res) => {
-  res.send('Usuarios 🧑👨👩🧑👨‍🦰');
-
-  console.log('Están metiendose con los usuarios')
-});
-
-// Metodo GET ruta reportes
-app.get('/reportes', (req, res) => {
-  res.send('Zona de reportes 🚚');
-});
-
-// Colocar la app a la escucha
+// Servidor a la escucha
 app.listen(puerto, () => {
-  console.log('Escuchando en el puerto', puerto);
+  console.log('Pilas parce.');
 });
